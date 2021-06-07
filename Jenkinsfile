@@ -2,14 +2,22 @@ pipeline {
     agent any
 	tools{nodejs "node"}
     stages {
-        stage('Test') {
+        stage('Build') { 
             steps {
-                echo 'Testing..'
-		sh 'npm install'
-		sh 'npm run test'
-		
+                echo 'Building'
+                nodejs('npm') {
+                    sh 'npm install'
+                }
             }
-        }        
+        }
+        stage('Test') { 
+            steps {
+                echo 'Testing'
+                nodejs('npm') {
+                    sh 'npm run test'
+                }
+            }
+        }
     }
 
     post {
