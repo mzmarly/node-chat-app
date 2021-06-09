@@ -73,7 +73,6 @@ pipeline {
 			subject: "Successful Deploy in Jenkins",
                         to: 'michalzma@gmail.com'
                     )
-                    )
                 }
                 failure{
                     emailext(
