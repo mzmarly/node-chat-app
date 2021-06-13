@@ -58,31 +58,31 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying..'
+//         stage('Deploy') {
+//             steps {
+//                 echo 'Deploying..'
 
-            }
-            post {
-                success{
-                    emailext(
-                        attachLog: true,
-                        body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
-                        recipientProviders: [developers(), requestor()],
-			subject: "Successful Deploy in Jenkins",
-                        to: 'michalzma@gmail.com'
-                    )
-                }
-                failure{
-                    emailext(
-                        attachLog: true,
-                        body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
-                        recipientProviders: [developers(), requestor()],
-			subject: "Deploy failed in Jenkins",
-                        to: 'michalzma@gmail.com'
-                    )
-                }
-            }
+//             }
+//             post {
+//                 success{
+//                     emailext(
+//                         attachLog: true,
+//                         body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+//                         recipientProviders: [developers(), requestor()],
+// 			subject: "Successful Deploy in Jenkins",
+//                         to: 'michalzma@gmail.com'
+//                     )
+//                 }
+//                 failure{
+//                     emailext(
+//                         attachLog: true,
+//                         body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+//                         recipientProviders: [developers(), requestor()],
+// 			subject: "Deploy failed in Jenkins",
+//                         to: 'michalzma@gmail.com'
+//                     )
+//                 }
+//             }
         }
     }
 }
